@@ -15,6 +15,10 @@ export class ContatoService {
     this.localStorageService.set(contato.id, contato);
   }
 
+  delete(contato: Contato){
+    this.localStorageService.remove(contato.id);
+  }
+
   getContato(id: string): Contato{
     return this.localStorageService.get(id);
   }

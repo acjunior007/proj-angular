@@ -25,9 +25,18 @@ export class HomeComponent implements OnInit {
   saveContato(form: NgForm){
     this.contato = form.value;
     console.log(this.contato);
-    this.contato.id = new Date().getTime().toString();
+    this.contato.id = (this.contato.id) ? this.contato.id : new Date().getTime().toString();
     this.contatoServices.save(this.contato);
-    this.contatos.push(this.contato);
+    this.contatos = this.contatoServices.getAllContatos();
     form.resetForm();
+  }
+  edit(contato: Contato){
+    this.contato = contato;
+  }
+
+  delete(contato: Contato){
+    let index = this.contatos.map((item) => item.id).indexOf(contato.id);
+    this.contatoServices.delete(contato);
+    this.contatos.splice(index, 1);
   }
 }

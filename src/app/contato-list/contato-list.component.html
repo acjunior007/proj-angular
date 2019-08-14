@@ -3,12 +3,21 @@
         <tr class="table-primary">
             <th>Nome</th>
             <th>Telefone</th>
+            <th>Açoes</th>
         </tr>
     </thead>
     <tbody *ngIf="contatos && contatos.length > 0">
         <tr *ngFor="let contato of contatos, let index = index ">
             <td>{{contato.nome}}</td>
             <td>{{contato.telefone}}</td>
+            <td>
+                <button class="btn brn-primary" (click)="edit(contato)">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn brn-danger" (click)="delete(contato)">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>
