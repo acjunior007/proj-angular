@@ -1,1 +1,14 @@
-<p>contato-list works!</p>
+<table class="table table-striped">
+    <thead>
+        <tr class="table-primary">
+            <th>Nome</th>
+            <th>Telefone</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="contatos && contatos.length > 0">
+        <tr *ngFor="let contato of contatos, let index = index ">
+            <td>{{contato.nome}}</td>
+            <td>{{contato.telefone}}</td>
+        </tr>
+    </tbody>
+</table>
